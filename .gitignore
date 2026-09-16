@@ -1,0 +1,14 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# Logs
+*.log
+
+# Personal Brain Vault
+# Uncomment this if you don't want your personal vault on GitHub:
+# Brain_vault/
