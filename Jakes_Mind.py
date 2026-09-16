@@ -2,7 +2,7 @@
 # JAKE'S MIND TERMINAL
 #
 # Streamlit + Python-Chess + Stockfish + Groq + Voice
-#
+# 
 # FEATURES
 # ------------------------------------------------------------
 # - Interactive clickable chessboard

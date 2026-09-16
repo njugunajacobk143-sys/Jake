@@ -1,0 +1,94 @@
+[
+  {
+    "role": "assistant",
+    "content": "♟ Jake plays **Nh3** (`g1h3`)."
+  },
+  {
+    "role": "assistant",
+    "content": "The language model returned an empty response."
+  },
+  {
+    "role": "assistant",
+    "content": "♟ Jake plays **Nh3** (`g1h3`)."
+  },
+  {
+    "role": "assistant",
+    "content": "The language model returned an empty response."
+  },
+  {
+    "role": "user",
+    "content": "I play **g5** (`g7g5`)."
+  },
+  {
+    "role": "assistant",
+    "content": "♟ Jake plays **Nxg5** (`h3g5`)."
+  },
+  {
+    "role": "assistant",
+    "content": "The language model returned an empty response."
+  },
+  {
+    "role": "user",
+    "content": "I play **h6** (`h7h6`)."
+  },
+  {
+    "role": "assistant",
+    "content": "♟ Jake plays **Nh7** (`g5h7`)."
+  },
+  {
+    "role": "assistant",
+    "content": "The language model returned an empty response."
+  },
+  {
+    "role": "user",
+    "content": "I play **Bg7** (`f8g7`)."
+  },
+  {
+    "role": "assistant",
+    "content": "♟ Jake plays **Nf8** (`h7f8`)."
+  },
+  {
+    "role": "assistant",
+    "content": "The language model returned an empty response."
+  },
+  {
+    "role": "user",
+    "content": "I play **Bxf8** (`g7f8`)."
+  },
+  {
+    "role": "assistant",
+    "content": "♟ Jake plays **Rg1** (`h1g1`)."
+  },
+  {
+    "role": "assistant",
+    "content": "The language model returned an empty response."
+  },
+  {
+    "role": "assistant",
+    "content": "♟ Jake plays **Nf3** (`g1f3`)."
+  },
+  {
+    "role": "assistant",
+    "content": "The language model returned an empty response."
+  },
+  {
+    "role": "assistant",
+    "content": "♟ Jake plays **d4** (`d2d4`)."
+  },
+  {
+    "role": "assistant",
+    "content": "Cloud interface handshake failed. Check the Groq API key, model name, network connection, or account limits."
+  },
+  {
+    "role": "user",
+    "content": "I play **Na6** (`b8a6`)."
+  },
+  {
+    "role": "assistant",
+    "content": "♟ Jake plays **Nf3** (`g1f3`)."
+  },
+  {
+    "role": "assistant",
+    "content": "Cloud interface handshake failed. Check the Groq API key, model name, network connection, or account limits."
+  }
+]
