@@ -921,7 +921,7 @@ def ask_jake(
                 )
 
     return (
-        "Cloud interface handshake failed. "
+        "Cloud interface handshake failed completly. "
         "Check the Groq API key, model name, "
         "network connection, or account limits."
     )
