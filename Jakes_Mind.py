@@ -150,7 +150,7 @@ if platform.system() == "Windows":
 else:
     STOCKFISH_PATH = BASE_DIR / "stockfish"
     if os.path.exists(STOCKFISH_PATH):
-        os.chmod(STOCKFISH_PATH, Oo755)
+        os.chmod(STOCKFISH_PATH, 493)
 
 # ============================================================
 # 6. LOGGING
