@@ -697,7 +697,7 @@ GROQ_MODEL = (
 GROQ_MAX_COMPLETION_TOKENS = int(
     os.environ.get(
         "GROQ_MAX_COMPLETION_TOKENS",
-        "medium",
+        "6000",
     )
 )
 
