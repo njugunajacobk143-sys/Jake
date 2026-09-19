@@ -56,6 +56,7 @@ from pathlib import Path
 import chess
 import chess.engine
 import chess.pgn
+import platform
 
 import pyttsx3
 import speech_recognition as sr
@@ -144,12 +145,12 @@ APP_LOG_PATH = (
     "jake_terminal.log"
 )
 
-
-STOCKFISH_PATH = (
-    BASE_DIR /
-    "stockfish.exe"
-)
-
+if platform.system() == "Windows":
+    STOCKFISH_PATH = BASE_DIR / "stockfish.exe"
+else:
+    STOCKFISH_PATH = BASE_DIR / "stockfish"
+    if os.path.exists(STOCKFISH_PATH):
+        os.chmod(STOCKFISH_PATH, Oo755)
 
 # ============================================================
 # 6. LOGGING
@@ -696,7 +697,7 @@ GROQ_MODEL = (
 GROQ_MAX_COMPLETION_TOKENS = int(
     os.environ.get(
         "GROQ_MAX_COMPLETION_TOKENS",
-        "700",
+        "medium",
     )
 )
 
@@ -832,8 +833,8 @@ def ask_jake(
                     model=GROQ_MODEL,
                     messages=messages,
                     temperature=temperature,
-                    max_completion_tokens=token_limit,
-                    reasoning_effort="medium",
+                    max_tokens=token_limit,
+                    reasoning_effort="medium"
                 )
             )
 
@@ -867,19 +868,38 @@ def ask_jake(
 
         except Exception as exc:
 
+            import traceback
+
             status_code = getattr(
                 exc,
                 "status_code",
                 None,
             )
 
-            logger.warning(
-                "Groq request failed | "
-                "attempt=%s | status=%s | error=%s",
-                attempt + 1,
-                status_code,
-                type(exc).__name__,
-            )
+            #logger.warning(
+                #"Groq request failed | "
+                #"attempt=%s | status=%s | error=%s",
+                #attempt + 1,
+                #status_code,
+                #type(exc).__name__,
+            #)
+
+            error_message = "No specific message detailed."
+            if hasattr(exc, "body") and isinstance(exc.body, dict):
+                error_message = exc.body.get("error", {}).get("message", str(exc.body))
+            elif hasattr(exc, "message"):
+                error_message = exc.message
+            else:
+                error_message = str(exc)
+
+                logger.error("=" * 50)
+                logger.error(f"❌ JAKE HANDSHAKE FAILED ON ATTEMPT {attempt + 1}")
+                logger.error(f"Error Type: {type(exc)._name_}")
+                logger.error(f"HTTP Status Code: {status_code}")
+                logger.error(f"API Error Message: {error_message}")
+                logger.error(f"Full Traceback:")
+                logger.error(traceback.format_exc())
+                logger.error("=" * 50)
 
             if (
                 status_code in (
