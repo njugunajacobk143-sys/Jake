@@ -697,7 +697,7 @@ GROQ_MODEL = (
 GROQ_MAX_COMPLETION_TOKENS = int(
     os.environ.get(
         "GROQ_MAX_COMPLETION_TOKENS",
-        "6000",
+        "4096",
     )
 )
 
@@ -775,7 +775,7 @@ def ask_jake(
     user_message,
     system_prompt,
     temperature=0.65,
-    max_tokens=None,
+    max_tokens=4096,
 ):
 
     if groq_client is None:
