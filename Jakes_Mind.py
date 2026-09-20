@@ -834,7 +834,7 @@ def ask_jake(
                     messages=messages,
                     temperature=temperature,
                     max_tokens=token_limit,
-                    reasoning_effort="medium"
+                    #reasoning_effort="medium"
                 )
             )
 
