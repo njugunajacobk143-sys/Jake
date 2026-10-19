@@ -775,7 +775,7 @@ def ask_jake(
     user_message,
     system_prompt,
     temperature=0.65,
-    max_tokens=4096,
+    max_tokens=1024,
 ):
 
     if groq_client is None:
