@@ -702,7 +702,7 @@ GROQ_MAX_COMPLETION_TOKENS = int(
 )
 
 
-groq_client = None
+groq_client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
 if GROQ_API_KEY:
 
@@ -834,9 +834,10 @@ def ask_jake(
                     messages=messages,
                     temperature=temperature,
                     max_tokens=token_limit,
-                    #reasoning_effort="medium"
+                    reasoning_effort="medium"
                 )
             )
+            return "tokenization error"
 
             elapsed = (
                 time.perf_counter()
@@ -876,13 +877,13 @@ def ask_jake(
                 None,
             )
 
-            #logger.warning(
-                #"Groq request failed | "
-                #"attempt=%s | status=%s | error=%s",
-                #attempt + 1,
-                #status_code,
-                #type(exc).__name__,
-            #)
+            logger.warning(
+                "Groq request failed | "
+                "attempt=%s | status=%s | error=%s",
+                attempt + 1,
+                status_code,
+                type(exc).__name__,
+            )
 
             error_message = "No specific message detailed."
             if hasattr(exc, "body") and isinstance(exc.body, dict):
@@ -900,6 +901,7 @@ def ask_jake(
                 logger.error(f"Full Traceback:")
                 logger.error(traceback.format_exc())
                 logger.error("=" * 50)
+                return("attempt error")
 
             if (
                 status_code in (
@@ -909,6 +911,7 @@ def ask_jake(
                     404,
                     422,
                 )
+                #return ("error code")
             ):
 
                 break
@@ -920,11 +923,11 @@ def ask_jake(
                     + random.random()
                 )
 
-    return (
-        "Cloud interface handshake failed completly. "
-        "Check the Groq API key, model name, "
-        "network connection, or account limits."
-    )
+    #return (
+        #"Cloud interface handshake failed completly. "
+       # "Check the Groq API key, model name, "
+        #"network connection, or account limits."
+    #)
 
 
 # ============================================================
